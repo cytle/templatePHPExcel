@@ -26,6 +26,12 @@ class templateExcel
 
 		return call_user_func_array(array($this->getActiveSheet(),'setCellValue'),func_get_args());
 	}
+	/**
+	*	二维数组直接填充
+	*	@parma $startPos 	开始填充的cell
+	*	@parma $data 		填充的cell数据
+	*	@parma $insert 	是否插入新行
+	*/
 	public function setRangeValue($startPos="A1",$data,$insert=true)
 	{
 		$RowCol=self::getCellRowCol($startPos);
@@ -65,7 +71,9 @@ class templateExcel
 	}
 
 	/**
-	*	$orientation:	0:行,1:列;
+	*	函数自动填充
+	*	@parma $startPos 开始填充的cell，也从这cell获得函数
+	*	@endPos $startPos 填充结束cell
 	*/
 	public function functionAutoFill($startPos,$endPos){
 
